@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+  <title><%= VUE_APP_TITLE %></title>
+  <script src="//cdn.jsdelivr.net/npm/js-polyfills@0.1.42/polyfill.min.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@mdi/font@5.3.45/css/materialdesignicons.min.css">
+  <link rel=" stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css">
+
+  <!-- 使用CDN的CSS文件 -->
+  <% for (var i in htmlWebpackPlugin.options.cdn &&
+      htmlWebpackPlugin.options.cdn.css) { %>
+  <link href="<%= htmlWebpackPlugin.options.cdn.css[i] %>" rel="stylesheet" />
+  <% } %>
+  <!-- 使用CDN的CSS文件 -->
+
+</head>
+
+<body style="cursor: pointer;">
+  <noscript>
+    <strong>We're sorry but tms doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+  </noscript>
+  <div id="app"></div>
+
+  <!-- 使用CDN的JS文件 -->
+  <% for (var i in htmlWebpackPlugin.options.cdn &&
+      htmlWebpackPlugin.options.cdn.js) { %>
+  <script src="<%= htmlWebpackPlugin.options.cdn.js[i] %>"></script>
+  <% } %>
+  <!-- 使用CDN的JS文件 -->
+
+  <!-- 测试环境，支持直接模拟用户登陆 -->
+  <% if (VUE_APP_ENV === 'development') { %>
+  <script>
+    // 测试用
+    window._mock_uid_ = window._mock_uid_ || "5rhoq0iqeegdrp923ur5j40dmi";
+    window._mock_try_ = 2;
+  </script>
+  <% } %>
+
+  <!--手机调试-->
+  <% if (VUE_APP_ERUDA === 'true') { %>
+  <script src="//cdn.jsdelivr.net/npm/eruda@2.3.3/eruda.min.js"></script>
+  <script> window.eruda.init(); </script>
+  <% } %>
+</body>
+
+</html>
