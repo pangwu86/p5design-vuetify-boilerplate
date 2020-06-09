@@ -24,8 +24,8 @@
               </div>
               <v-card-text>
                 <v-form v-if="!showUser" ref="form" v-model="valid" lazy-validation>
-                  <v-text-field label="登录名" v-model="loginForm.name" type="text" :rules="vaildRuls.notEmpty" outlined clearable></v-text-field>
-                  <v-text-field label="密码" v-model="loginForm.passwd" type="password" :rules="vaildRuls.notEmpty" outlined clearable></v-text-field>
+                  <v-text-field label="登录名" v-model="loginForm.name" type="text" :rules="vaildRules.notEmpty" outlined clearable></v-text-field>
+                  <v-text-field label="密码" v-model="loginForm.passwd" type="password" :rules="vaildRules.notEmpty" outlined clearable></v-text-field>
                   <v-btn color="primary" block x-large :loading="ingLogin" @click="loginByPasswd">登录</v-btn>
                 </v-form>
                 <v-row align="center" justify="center" v-if="showUser">
@@ -55,7 +55,10 @@
 
 <script>
 import imgLogo from "@/assets/logo_login.png";
+import { vaildRules } from "@/utils/validate";
+import { initRouter } from "@/permission";
 import { mapGetters } from "vuex";
+let isDebug = process.env.NODE_ENV === "development";
 
 export default {
   components: {},
@@ -68,9 +71,7 @@ export default {
         passwd: ""
       },
       valid: true,
-      vaildRuls: {
-        notEmpty: [v => !!v || "不能为空"]
-      },
+      vaildRules: vaildRules,
       showUser: false,
       initTip: "登录中...",
       initDu: 250,
@@ -150,6 +151,10 @@ export default {
       await this.$store.dispatch("user/setSidemenu", sidemenu);
       await this.$timeout(initDu);
 
+      this.initTip = "初始化路由...";
+      await initRouter();
+      await this.$timeout(initDu);
+
       this.initTip = "跳转主界面...";
       this.$router.push("/dashboard/index");
     }
@@ -158,6 +163,12 @@ export default {
     let uid = this.$route.query.uid || "";
     if (uid) {
       this.loginByUid(uid);
+    } else {
+      // debug环境，自动填写用户名密码
+      if (isDebug) {
+        this.loginForm.name = "zhangsan@anju.com";
+        this.loginForm.passwd = "123456";
+      }
     }
   }
 };

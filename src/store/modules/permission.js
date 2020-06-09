@@ -37,7 +37,7 @@ const mutations = {
 const actions = {
   generateRoutes({ commit }, userRole) {
     return new Promise(resolve => {
-      console.log("route-role:" + JSON.stringify(userRole));
+      // console.log("route-role:" + JSON.stringify(userRole));
       let role = userRole.role;
       let actions = userRole.actions;
       let accessedRoutes;

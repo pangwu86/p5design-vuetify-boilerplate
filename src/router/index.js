@@ -56,11 +56,13 @@ const addAsyncRouter = routerConf => {
 import dashboardRouter from "./modules/dashboard";
 import baseInfoRouter from "./modules/baseInfo";
 import errorRouter from "./modules/error";
+import projRouter from "./modules/proj";
 const all2notfound = { path: "*", redirect: "/404", hidden: true };
 
 addAsyncRouter(dashboardRouter);
 addAsyncRouter(baseInfoRouter);
 addAsyncRouter(errorRouter);
+addAsyncRouter(projRouter);
 addAsyncRouter(all2notfound);
 
 export const asyncRoutes = _asyncRoutes;

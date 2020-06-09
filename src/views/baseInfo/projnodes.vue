@@ -15,14 +15,14 @@ export default {
   data: () => {
     return {
       pageBarConf: {
-        title: "参建单位库",
+        title: "项目节点库",
         crumbs: [
           {
             text: "基本信息",
             disabled: true
           },
           {
-            text: "参建单位库",
+            text: "项目节点库",
             disabled: true
           }
         ]

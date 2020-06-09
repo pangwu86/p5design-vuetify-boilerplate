@@ -88,7 +88,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-import screenfull from "screenfull";
+import { toggleFullScreen, isFullscreenEnabled } from "@/utils/page";
 import imgNavLogo from "@/assets/logo_navbar.jpg";
 
 export default {
@@ -96,7 +96,7 @@ export default {
     let self = this;
     return {
       imgNavLogo: imgNavLogo,
-      pageTitle: "首页",
+      pageTitle: "安居项目进度管理系统",
       isFullscreen: false,
       navMenu: [
         {
@@ -110,7 +110,7 @@ export default {
           onClick: self.toResetpwd
         },
         {
-          text: "退出",
+          text: "退出系统",
           icon: "mdi-logout",
           onClick: self.toLogout
         }
@@ -123,11 +123,11 @@ export default {
   },
   methods: {
     toggleScreenFull() {
-      if (!screenfull.enabled) {
+      if (!isFullscreenEnabled()) {
         this.$dialog.alert("抱歉，您的浏览器不支持该操作");
         return false;
       }
-      screenfull.toggle();
+      toggleFullScreen();
     },
     toggleDrawer() {
       this.$store.dispatch("app/toggleSideBar");

@@ -15,7 +15,7 @@ router.beforeEach(async (to, from, next) => {
   NProgress.start();
   // 修改标题
   document.title = getPageTitle(to.meta && to.meta.title);
-  Vue.prototype.$bus.$emit("pageTitle", to.meta && to.meta.title);
+  // Vue.prototype.$bus.$emit("pageTitle", to.meta && to.meta.title);
 
   const hasToken = getToken();
   // 已登陆
@@ -24,6 +24,7 @@ router.beforeEach(async (to, from, next) => {
       next();
       NProgress.done();
     } else {
+      console.log("has-router: " + hasRouter + ", path:" + to.path);
       if (hasRouter) {
         next();
       } else {
@@ -56,3 +57,11 @@ router.beforeEach(async (to, from, next) => {
 router.afterEach(() => {
   NProgress.done();
 });
+
+export async function initRouter() {
+  const userRole = await store.dispatch("user/getUserRole");
+  const accessRoutes = await store.dispatch("permission/generateRoutes", userRole);
+  console.log("init-router: " + accessRoutes.length);
+  router.addRoutes(accessRoutes);
+  hasRouter = true;
+}

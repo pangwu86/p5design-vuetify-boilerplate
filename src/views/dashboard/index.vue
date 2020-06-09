@@ -1,15 +1,23 @@
 <template>
-  <v-content>
+  <v-content class="page">
     <v-container fluid>
-      <h1>dashboard</h1>
+      <pageBar :title="pageBarConf.title"></pageBar>
     </v-container>
   </v-content>
 </template>
 
 <script>
+import pageBar from "@/components/common/PageBar";
 export default {
-  data() {
-    return {};
+  components: {
+    pageBar
+  },
+  data: () => {
+    return {
+      pageBarConf: {
+        title: "首页"
+      }
+    };
   },
   methods: {},
   mounted() {}

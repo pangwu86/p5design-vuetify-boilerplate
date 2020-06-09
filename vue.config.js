@@ -38,8 +38,10 @@ module.exports = {
   publicPath: isProduction ? "/" : "/", // 打包后引用的资源路径
   outputDir: "dist", // 打包目录
   chainWebpack: config => {
+    // 修复HMR
+    config.resolve.symlinks(true);
     // 解决moment打包过大的问题，只引用中文
-    // config.plugin("ignore").use(new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /(zh-cn)$/));
+    config.plugin("ignore").use(new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /(zh-cn)$/));
     // 生产环境打包分析体积
     if (isProduction && useAnalyzer) {
       config.plugin("webpack-bundle-analyzer").use(require("webpack-bundle-analyzer").BundleAnalyzerPlugin);

@@ -4,7 +4,8 @@ import { getSite, getToken } from "@/utils/auth";
 const errCode = {
   "e.auth.login.invalid.wxCode": "wxcode已使用，请点击授权登录",
   "e.auth.loginstr.invalid": "错误的登录名或密码",
-  "e.auth.account.noexists": "错误的登录名或密码",
+  "e.auth.loginstr.invalid": "错误的登录名或密码",
+  "e.auth.login.invalid.passwd": "错误的登录名或密码",
   "e.cmd.www_passwd.CheckFailed": "密码错误，请重新输入",
   "e.www.api.auth.nologin": "登录信息过期，请重新登录",
   "e.io.obj.exists": "已经存在相同的内容",

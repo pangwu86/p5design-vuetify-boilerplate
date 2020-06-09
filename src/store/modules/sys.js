@@ -96,9 +96,9 @@ const actions = {
 
   getRole({ state }, roleNm) {
     return new Promise(resolve => {
-      console.log("get-role:" + roleNm);
+      // console.log("get-role:" + roleNm);
       const roleConf = state.roles.find(role => role.nm == roleNm);
-      console.log("get-role:" + JSON.stringify(roleConf));
+      // console.log("get-role:" + JSON.stringify(roleConf));
       resolve(
         roleConf || {
           roleText: "未定义角色",

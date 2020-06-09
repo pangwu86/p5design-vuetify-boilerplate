@@ -19,7 +19,6 @@
     "nprogress": "^0.2.0",
     "qs": "^6.9.1",
     "resize-detector": "^0.2.0",
-    "screenfull": "^5.0.2",
     "uuid": "^3.3.3",
     "video.js": "^7.8.3",
     "videojs-flash": "^2.2.1",

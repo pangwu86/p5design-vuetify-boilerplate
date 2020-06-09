@@ -96,11 +96,11 @@ export default {
 <style lang="scss">
 .page {
   height: 100%;
-  background: #fff;
+  background: #eef5f9;
 }
 .page-content {
   height: 100%;
-  background: #fff;
+  background: #eef5f9;
   display: flex;
 }
 .loading-data,

@@ -1,15 +1,33 @@
 <template>
-  <v-content>
+  <v-content class="page">
     <v-container fluid>
-      <h1>角色</h1>
+      <pageBar :title="pageBarConf.title" :crumbs="pageBarConf.crumbs"></pageBar>
     </v-container>
   </v-content>
 </template>
 
 <script>
+import pageBar from "@/components/common/PageBar";
 export default {
-  data() {
-    return {};
+  components: {
+    pageBar
+  },
+  data: () => {
+    return {
+      pageBarConf: {
+        title: "角色库",
+        crumbs: [
+          {
+            text: "基本信息",
+            disabled: true
+          },
+          {
+            text: "角色库",
+            disabled: true
+          }
+        ]
+      }
+    };
   },
   methods: {},
   mounted() {}

@@ -110,7 +110,7 @@ const actions = {
 
   setUserRole({ commit }, roleConf) {
     return new Promise(resolve => {
-      console.log("set-role:" + JSON.stringify(roleConf));
+      // console.log("set-role:" + JSON.stringify(roleConf));
       commit("SET_ROLE", roleConf);
       resolve();
     });
@@ -119,7 +119,7 @@ const actions = {
   getUserRole({ state }) {
     return new Promise(resolve => {
       let userRole = { role: state.role, roleText: state.roleText, actions: state.actions };
-      console.log("user-role:" + JSON.stringify(userRole));
+      // console.log("user-role:" + JSON.stringify(userRole));
       resolve(userRole);
     });
   },
