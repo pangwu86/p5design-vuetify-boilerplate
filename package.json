@@ -20,7 +20,7 @@
     "qs": "^6.9.1",
     "resize-detector": "^0.2.0",
     "uuid": "^3.3.3",
-    "video.js": "^7.8.3",
+    "video.js": "^7.20.3",
     "videojs-flash": "^2.2.1",
     "vue": "^2.6.11",
     "vue-axios": "^2.1.5",
